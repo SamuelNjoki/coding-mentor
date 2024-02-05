@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Courses</h2>
+        <p>List of all courses that mentors have enrolled to take mentees through</p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Courses Section ======= -->
+    <section id="courses" class="courses">
+      <div class="container" data-aos="fade-up">
+
+        {% comment %} {% include 'messages.html'%} {% endcomment %}
+        
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+          <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+
+              {% for course  in course %}
+              <div class="swiper-slide">
+              <div class="d-flex align-items-stretch">
+                <div class="course-item">
+                  <a href="{% url "course_details" course.id %}"><img src="{{course.image.url}}" class="img-fluid" alt="..."></a>
+                  <div class="course-content">
+                    <div class="col-lg-12 col-md-12 d-flex justify-content-between align-items-center mb-3">
+                      <h4><a href="{% url "course_details" course.id %}" class="text-light">{{course.title}}</a></a></h4>
+                      <p class="price">ksh 0</p>
+                      <a href="{% url "enrol" course.id %}" class="get-started-btn border-light ">Enroll</a>
+                    </div>
+                    <h3><a href="{% url "course_details" course.id %}">{{course.title}}</a></h3>
+                    <p>{{course.description}}</p>
+                   
+                  </div>
+                </div>
+              </div>
+            </div> 
+            {% endfor %}<!-- End Course Item-->
+    
+
+
+  
+          </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Courses Section -->
+
+  </main><!-- End #main -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  {% if messages %}
+    {% for message in messages %}
+    <script>
+      Swal.fire({
+        "text":"{{message}}",
+        "icon":"success",
+        "confirmButtonColor": "#5fcf80",  
+      });
+    </script>
+    {% endfor %}
+{% endif %}
+
+  <script>
+    
+    setTimeout(function(){
+
+       if($('#msg').length > 0) {
+      $('#msg').remove();
+    }
+    },5000)
+
+   </script>
+  {% endblock %}

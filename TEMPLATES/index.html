@@ -1,0 +1,179 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      {% if user.is_authenticated %}
+      <h1 class="text-success">Welcome, {{user.username}}</h1>
+      {% else %}
+      <a href="{% url "login" %}" class="btn-get-started">Login</a>
+      {% endif %}
+      <h2>Learn, Grow and Succeed</h2>
+      <h3 class="text-light">Join us in creating a network where knowledge knows no boundaries!</h3>
+      
+      
+    </div>
+  </section>
+  <a href="#" class="btn btn-primary btn-lg floating-button">coffee</a>
+  <!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>Our Mission.</h3>
+            <p class="fst-italic">
+              Empowering individuals with the skills and confidence to thrive in the ever-evolving world of coding. We strive to foster a community where knowledge is shared, connections are formed, and every mentee is equipped to navigate the intricate landscape of programming.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> We believe that collective learning, collaboration, and shared experiences are the cornerstones of success in the coding world..</li>
+              <li><i class="bi bi-check-circle"></i> Experienced Mentors: Our team of mentors brings a wealth of industry experience to guide and inspire mentees..</li>
+              <li><i class="bi bi-check-circle"></i> Diversity and Inclusion: We embrace mentees from all backgrounds, fostering an inclusive environment where everyone has a voice and a unique contribution to make...</li>
+            </ul>
+            <p>
+              Ready to embark on a coding adventure? Join Coding Cohort and become part of a community where your coding dreams take flight. Your journey to coding excellence starts here.
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+    
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Courses</h2>
+          <p>Popular Courses</p>
+        </div>
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+          <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="50">
+            <div class="swiper-wrapper">
+
+
+            {% for course in co %}
+              <div class="swiper-slide">
+              <div class="d-flex align-items-stretch">
+                <div class="course-item">
+                  <img src="{{course.image.url}}" class="img-fluid" alt="...">
+                  <div class="course-content">
+                    <div class="col-lg-12 col-md-12 d-flex justify-content-between align-items-center mb-3">
+                      <h4>{{course.title}}</h4>
+                      <p class="price">ksh 0</p>
+                    </div>
+    
+                    <h3><a href="course-details.html">{{course.title}}</a></h3>
+                    <p>{{course.description}}</p>
+                    <div class="trainer d-flex justify-content-between align-items-center">
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End Course Item-->
+        {% endfor %}
+  
+          </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Popular Courses Section -->
+
+    <!-- ======= Trainers Section ======= -->
+    {% comment %} <section id="trainers" class="trainers">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/trainers/trainer-1.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Walter White</h4>
+                <span>Web Development</span>
+                <p>
+                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                </p>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/trainers/trainer-2.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Sarah Jhinson</h4>
+                <span>Marketing</span>
+                <p>
+                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                </p>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/trainers/trainer-3.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>William Anderson</h4>
+                <span>Content</span>
+                <p>
+                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+                </p>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Trainers Section --> {% endcomment %}
+
+  </main><!-- End #main -->
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  {% if messages %}
+      {% for message in messages %}
+      <script>
+        Swal.fire({
+          "text":"{{message}}",
+          "icon":"success",
+          "confirmButtonColor": "#5fcf80", 
+        });
+      </script>
+      {% endfor %}
+  {% endif %}
+{% endblock content %}
