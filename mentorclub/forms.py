@@ -9,6 +9,16 @@ from mentorclub.models import Course, Member,User
  
 class RegistrationForm(UserCreationForm):
     
+    phone=forms.CharField(
+        label='',
+        max_length=13,
+        min_length=9,
+        validators=[RegexValidator(
+            r'^[0-9]*$',
+            message='Invalid phone number!')],
+        widget=forms.TextInput(attrs={'placeholder':'phone number'})
+        )
+    
     class Meta:
         model = User
         fields = ("username","email","firstname","lastname","phone","bio","interest","gender","password1","password2",)
